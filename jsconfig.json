@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components": ["./components"],
+      "@constants": ["./constants"],
+      "@layouts": ["./layouts"],
+      "@themes": ["./themes"],
+      "@helpers": ["./helpers"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
