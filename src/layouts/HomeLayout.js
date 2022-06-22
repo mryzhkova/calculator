@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import themesValues from '@constants/themesValues';
+import themesValues from '@/constants/themesValues';
 
 const HomeLayout = styled.div`
   display: grid;

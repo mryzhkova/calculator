@@ -1,3 +1,5 @@
+import dataCyValues from '@/constants/dataCyValues';
+
 describe('Calculator', () => {
   it('successfully loads', () => {
     cy.visit('/');
@@ -22,10 +24,10 @@ describe('History', () => {
   });
 
   it('check history visibility', () => {
-    cy.get('[data-cy="history"]').should('exist');
-    cy.get('[data-cy="showHistory"]').should('not.exist');
-    cy.get('[data-cy="hideHistory"]').click();
-    cy.get('[data-cy="history"]').should('not.exist');
-    cy.get('[data-cy="showHistory"]').should('exist');
+    cy.get(`[data-cy=${dataCyValues.history}]`).should('exist');
+    cy.get(`[data-cy=${dataCyValues.showHistory}]`).should('not.exist');
+    cy.get(`[data-cy=${dataCyValues.hideHistory}]`).click();
+    cy.get(`[data-cy=${dataCyValues.history}]`).should('not.exist');
+    cy.get(`[data-cy=${dataCyValues.showHistory}]`).should('exist');
   });
 });

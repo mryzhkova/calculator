@@ -1,14 +1,17 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import btnsValues from '@constants/btnsValues';
+import React from 'react';
+
+import btnsValues from '@/constants/btnsValues';
+
 import Button from './Button';
 import { StyledKeypad } from './components';
 
-const Keypad = ({ clickHandler }) => (
+
+const Keypad = ({ handelClickButton }) => (
   <StyledKeypad>
     {btnsValues.map(btn => (
       <Button
-        clickHandler={clickHandler}
+        handelClickButton={handelClickButton}
         value={btn}
         key={btn}
         dataCy={btn}
@@ -18,11 +21,11 @@ const Keypad = ({ clickHandler }) => (
 );
 
 Keypad.defaultProps = {
-  clickHandler: () => {},
+  handelClickButton: () => {},
 };
 
 Keypad.propTypes = {
-  clickHandler: PropTypes.func,
+  handelClickButton: PropTypes.func,
 };
 
 export default Keypad;

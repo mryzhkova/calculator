@@ -1,6 +1,8 @@
 import React from 'react';
 import { withTheme } from 'styled-components';
-import themesValues from '@constants/themesValues';
+
+import themesValues from '@/constants/themesValues';
+
 import StyledSelect from './components';
 
 
@@ -24,10 +26,10 @@ class SelectClass extends React.Component {
     }
   }
 
-  chengeSelect = e => {
+  chengeSelect = event => {
     const { theme } = this.props;
-    this.setState({ option: e.target.value });
-    theme.toggleTheme(e.target.value);
+    this.setState({ option: event.target.value });
+    theme.toggleTheme(event.target.value);
   };
 
   render() {

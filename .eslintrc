@@ -9,20 +9,31 @@
     "plugin:react-hooks/recommended",
     "plugin:cypress/recommended",
     "airbnb",
-    "prettier" 
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
     "requireConfigFile": false,
     "babelOptions": {
-      "presets": ["@babel/preset-react"]
-   }
+      "presets": [
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties"
+      ]
+    }
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react",
+    "import"
+  ],
   "parser": "@babel/eslint-parser",
   "rules": {
-    "arrow-parens": ["error", "as-needed"],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
     "semi": "error",
     "prefer-destructuring": "error",
     "max-len": [
@@ -48,7 +59,9 @@
     "react/jsx-filename-extension": [
       2,
       {
-        "extensions": [".jsx"]
+        "extensions": [
+          ".jsx"
+        ]
       }
     ],
     "react/function-component-definition": [
@@ -57,8 +70,14 @@
         "namedComponents": "arrow-function"
       }
     ],
-    "jsx-quotes": ["error", "prefer-double"],
-    "comma-dangle": [2, "always-multiline"],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "comma-dangle": [
+      2,
+      "always-multiline"
+    ],
     "prefer-const": [
       "error",
       {
@@ -67,21 +86,51 @@
       }
     ],
     "react/prop-types": "off",
-    "react/jsx-fragments": [1, "element"],
+    "react/jsx-fragments": [
+      1,
+      "element"
+    ],
     "import/prefer-default-export": "off",
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+       ], 
+        "alphabetize": { 
+          "order": "asc", 
+          "caseInsensitive": true 
+        },
+        "newlines-between": "always"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
       "alias": {
         "map": [
-          ["@components", "./src/components"],
-          ["@constants", "./src/constants"],
-          ["@layouts", "./src/layouts"],
-          ["@themes", "./src/themes"],
-          ["@helpers", "./src/helpers"]
+          [
+            "@",
+            "./src"
+          ]
         ],
-        "extensions": [".js", ".jsx"]
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
       }
     }
   }

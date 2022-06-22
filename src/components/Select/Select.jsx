@@ -4,11 +4,18 @@ import React, {
   useState,
 } from 'react';
 import { ThemeContext } from 'styled-components';
-import themesValues from '@constants/themesValues';
+
+import dataCyValues from '@/constants/dataCyValues';
+import storageKeys from '@/constants/storageKeys';
+import themesValues from '@/constants/themesValues';
+
 import StyledSelect from './components';
 
+const DEFAULT_THEME = localStorage.getItem(storageKeys.theme) || themesValues.light;
+
+
 const Select = () => {
-  const [option, setOption] = useState(themesValues.light);
+  const [option, setOption] = useState(DEFAULT_THEME);
 
   const { toggleTheme, currentTheme } = useContext(ThemeContext);
 
@@ -16,9 +23,9 @@ const Select = () => {
     setOption(currentTheme);
   }, [currentTheme]);
 
-  const chengeSelect = e => {
-    setOption(e.target.value);
-    toggleTheme(e.target.value);
+  const chengeSelect = event => {
+    setOption(event.target.value);
+    toggleTheme(event.target.value);
   };
 
   return (
@@ -26,7 +33,7 @@ const Select = () => {
       <select
         value={option}
         onChange={chengeSelect}
-        data-cy="select-theme">
+        data-cy={dataCyValues.selectTheme}>
         {Object.values(themesValues).map(value => (
           <option value={value} key={value}>
             {value}

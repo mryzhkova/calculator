@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import themesValues from '@constants/themesValues';
+
+import themesValues from '@/constants/themesValues';
 
 
 export const StyledKeypad = styled.div`

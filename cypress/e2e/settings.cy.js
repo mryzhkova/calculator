@@ -1,3 +1,5 @@
+import dataCyValues from '@/constants/dataCyValues';
+
 describe('Calculator', () => {
   it('successfully loads', () => {
     cy.visit('/settings');
@@ -6,19 +8,19 @@ describe('Calculator', () => {
 
 describe('Settings', () => {
   it('check switching theme', () => {
-    cy.get('[data-cy="select-theme"]')
+    cy.get(`[data-cy=${dataCyValues.selectTheme}]`)
       .should('have.value', 'Light Theme');
-    cy.get('[data-cy="select-theme"]')
+    cy.get(`[data-cy=${dataCyValues.selectTheme}]`)
       .select('Dark Theme')
       .should('have.value', 'Dark Theme');
     cy.visit('/settings');
-    cy.get('[data-cy="select-theme"]')
+    cy.get(`[data-cy=${dataCyValues.selectTheme}]`)
       .should('have.value', 'Dark Theme');
-    cy.get('[data-cy="select-theme"]')
+    cy.get(`[data-cy=${dataCyValues.selectTheme}]`)
       .select('Colored Theme')
       .should('have.value', 'Colored Theme');
     cy.visit('/settings');
-    cy.get('[data-cy="select-theme"]')
+    cy.get(`[data-cy=${dataCyValues.selectTheme}]`)
       .should('have.value', 'Colored Theme');
   });
 
@@ -33,7 +35,7 @@ describe('Settings', () => {
       '7 + 1',
     );
     cy.visit('/settings');
-    cy.get('[data-cy="clearHistory"]').click();
+    cy.get(`[data-cy=${dataCyValues.clearHistory}]`).click();
     cy.visit('/');
     cy.get('[data-cy="0h"]').should('not.exist');
   });

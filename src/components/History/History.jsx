@@ -1,7 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import dataCyValues from '@/constants/dataCyValues';
+
 import StyledHistory from './components';
 import HistoryButton from './HistoryButton';
+
 
 const History = ({
   history,
@@ -9,12 +13,12 @@ const History = ({
   showHistory,
   setShowHistory,
 }) => {
-  const valueHandler = h => () => {
-    setCurrentValue(h);
+  const valueHandler = historyRes => () => {
+    setCurrentValue(historyRes);
   };
 
   return showHistory ? (
-    <StyledHistory data-cy="history">
+    <StyledHistory data-cy={dataCyValues.history}>
       <div className="title">History</div>
       <div className="history">
         {history.map(h => (

@@ -1,13 +1,17 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import storageKeys from '@/constants/storageKeys';
+
 import { StyledHistoryButton } from './components';
+
 
 class HistoryButtonClass extends React.Component {
 
   showHistoryHandler = show => () => {
     const { setShowHistory } = this.props;
     setShowHistory(!show);
-    localStorage.setItem('showHistory', JSON.stringify(!show));
+    localStorage.setItem(storageKeys.showHistory, JSON.stringify(!show));
   };
 
   render() {

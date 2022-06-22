@@ -1,10 +1,15 @@
 import React from 'react';
-import Select from '@components/Select';
+
+import Select from '@/components/Select';
+import dataCyValues from '@/constants/dataCyValues';
+import storageKeys from '@/constants/storageKeys';
+
 import StyledSettings, { ResetButton } from './components';
+
 
 const Settings = () => {
   const clearHistory = () => {
-    localStorage.removeItem('history');
+    localStorage.removeItem(storageKeys.history);
   };
 
   return (
@@ -14,7 +19,7 @@ const Settings = () => {
         <div className="switch">Switch Theme</div>
         <Select />
         <ResetButton
-          data-cy="clearHistory"
+          data-cy={dataCyValues.clearHistory}
           onClick={clearHistory}>
           Clear All History
         </ResetButton>

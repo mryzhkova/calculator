@@ -1,7 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import StyledHistory from './components';
 import HistoryButtonClass from './HistoryButtonClass';
+
 
 class HistoryClass extends React.Component {
 

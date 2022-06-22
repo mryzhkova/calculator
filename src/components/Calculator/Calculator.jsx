@@ -1,14 +1,17 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { getResult, makeCommand } from '@helpers/command';
-import { digits, operations } from '@constants/btnsValues';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+
+import ControlPanel from '@/components/ControlPanel';
+import Display from '@/components/Display';
+import History from '@/components/History';
+import Keypad from '@/components/Keypad';
+import { digits, operations } from '@/constants/btnsValues';
+import storageKeys from '@/constants/storageKeys';
+import { getResult, makeCommand } from '@/helpers/command';
 import {
   checkDots,
   checkOperations,
-} from '@helpers/validations';
-import Display from '@components/Display';
-import Keypad from '@components/Keypad';
-import ControlPanel from '@components/ControlPanel';
-import History from '@components/History';
+} from '@/helpers/validations';
+
 
 const Calculator = () => {
   const [culcValue, setCulcValue] = useState('');
@@ -18,22 +21,24 @@ const Calculator = () => {
 
   const historyValue = useRef('');
 
-  const execute = command =>
-    command.execute(command.value, currentValue);
+  const execute = useCallback(
+    command => command.execute(command.value, currentValue),
+    [currentValue],
+  );
 
   useEffect(() => {
     setHistory(
-      JSON.parse(localStorage.getItem('history')) || [],
+      JSON.parse(localStorage.getItem(storageKeys.history)) || [],
     );
     setShowHistory(
-      localStorage.getItem('showHistory') === null
+      localStorage.getItem(storageKeys.showHistory) === null
         ? true
-        : JSON.parse(localStorage.getItem('showHistory')),
+        : JSON.parse(localStorage.getItem(storageKeys.showHistory)),
     );
   }, []);
 
-  const clickHandler = e => {
-    const value = e.target.textContent;
+  const handelClickButton = useCallback(event => {
+    const value = event.target.textContent;
     if (currentValue && currentValue.includes('(')) {
       if (digits.includes(value)) {
         if (!checkDots(currentValue.split(' '), value))
@@ -76,7 +81,7 @@ const Calculator = () => {
           ];
           setHistory(newHistory);
           localStorage.setItem(
-            'history',
+            storageKeys.history,
             JSON.stringify(newHistory),
           );
           historyValue.current = res;
@@ -185,7 +190,7 @@ const Calculator = () => {
       ];
       setHistory(newHistory);
       localStorage.setItem(
-        'history',
+        storageKeys.history,
         JSON.stringify(newHistory),
       );
       historyValue.current = res;
@@ -201,7 +206,7 @@ const Calculator = () => {
         culcValue.length - 1,
       )} ${last} `;
     }
-  };
+  }, [culcValue, currentValue, execute, history]);
 
   return (
     <React.Fragment>
@@ -209,7 +214,7 @@ const Calculator = () => {
         output={culcValue}
         currentOutput={currentValue}
       />
-      <Keypad clickHandler={clickHandler} />
+      <Keypad handelClickButton={handelClickButton} />
       <ControlPanel
         showHistory={showHistory}
         setShowHistory={setShowHistory}

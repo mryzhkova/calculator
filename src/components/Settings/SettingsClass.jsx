@@ -1,12 +1,15 @@
 import React from 'react';
-import SelectClass from '@components/Select/SelectClass';
+
+import SelectClass from '@/components/Select/SelectClass';
+import storageKeys from '@/constants/storageKeys';
+
 import StyledSettings, { ResetButton } from './components';
 
 
 class SettingsClass extends React.Component {
 
   static clearHistory = () => {
-    localStorage.removeItem('history');
+    localStorage.removeItem(storageKeys.history);
   };
 
   render() {
