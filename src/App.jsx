@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Calculator from '@/components/Calculator';
-import CalculatorClass from '@/components/Calculator/CalculatorClass';
+import CalculatorService from '@/components/Calculator/CalculatorService';
 import Header from '@/components/Header';
 import Settings from '@/components/Settings';
 import SettingsClass from '@/components/Settings/SettingsClass';
@@ -48,7 +48,7 @@ const App = () => {
             path="/class"
             element={
               <HomeLayout>
-                <CalculatorClass />
+                <CalculatorService />
               </HomeLayout>
             }
           />

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import withCalc from '@/components/Calculator/withCalc';
 import ControlPanelClass from '@/components/ControlPanel/ControlPanelClass';
 import Display from '@/components/Display';
 import HistoryClass from '@/components/History/HistoryClass';
@@ -38,4 +37,4 @@ const Calc = props => {
   );
 };
 
-export default withCalc(Calc);
+export default Calc;
