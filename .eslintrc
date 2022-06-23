@@ -1,0 +1,137 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:cypress/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": [
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties"
+      ]
+    }
+  },
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "semi": "error",
+    "prefer-destructuring": "error",
+    "max-len": [
+      "warn",
+      {
+        "code": 150,
+        "ignoreUrls": true,
+        "ignorePattern": "import"
+      }
+    ],
+    "no-unused-vars": "warn",
+    "operator-linebreak": "warn",
+    "react/jsx-closing-tag-location": 2,
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-max-props-per-line": [
+      2,
+      {
+        "maximum": 2,
+        "when": "always"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [
+          ".jsx"
+        ]
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "comma-dangle": [
+      2,
+      "always-multiline"
+    ],
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "react/prop-types": "off",
+    "react/jsx-fragments": [
+      1,
+      "element"
+    ],
+    "import/prefer-default-export": "off",
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+       ], 
+        "alphabetize": { 
+          "order": "asc", 
+          "caseInsensitive": true 
+        },
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "@",
+            "./src"
+          ]
+        ],
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+  }
+}
